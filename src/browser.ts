@@ -1,6 +1,6 @@
+import { ConversionError, InvalidInputError } from "./errors.js"
 import type { ConvertOptions, ConvertResult, BrowserInput, ValidationResult } from "./types.js"
 import { validateConvertOptions } from "./utils/validation.js"
-import { ConversionError, InvalidInputError } from "./errors.js"
 
 async function convertWithCanvas(
   input: BrowserInput,

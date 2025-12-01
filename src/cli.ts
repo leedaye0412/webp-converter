@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
+import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs"
+import { basename, dirname, extname, join } from "node:path"
+
 import { program } from "commander"
-import { existsSync, mkdirSync, writeFileSync, readdirSync, statSync } from "node:fs"
-import { join, dirname, basename, extname } from "node:path"
 
 import { batchConvert } from "./batch.js"
+import type { ResizeFit, ResizeOptions } from "./types.js"
 import { formatBytes } from "./utils/file.js"
 import { SUPPORTED_FORMATS } from "./utils/validation.js"
-import type { ResizeFit, ResizeOptions } from "./types.js"
 
 interface CLIOptions {
   output?: string

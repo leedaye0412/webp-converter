@@ -1,11 +1,11 @@
-import type { BatchConvertOptions, BatchResultItem, NodeInput } from "./types.js"
 import { convertToWebP } from "./converter.js"
+import type { BatchConvertOptions, BatchResultItem, NodeInput } from "./types.js"
 
 export async function batchConvert(
   inputs: readonly NodeInput[],
   options?: BatchConvertOptions,
 ): Promise<readonly BatchResultItem<Buffer>[]> {
-  const { onProgress, concurrency = 4, stopOnError = false, ...convertOptions } = options ?? {}
+  const { onProgress, stopOnError = false, ...convertOptions } = options ?? {}
   const total = inputs.length
   let current = 0
   const results: BatchResultItem<Buffer>[] = []

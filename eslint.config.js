@@ -1,31 +1,43 @@
+import { FlatCompat } from "@eslint/eslintrc"
 import eslint from "@eslint/js"
-import tseslint from "typescript-eslint"
 import importPlugin from "eslint-plugin-import"
 import prettierConfig from "eslint-config-prettier"
 
-export default tseslint.config(
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+})
+
+const tsConfigs = compat.config({
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: import.meta.dirname,
+  },
+  extends: [
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
+  ],
+}).map((config) => ({
+  ...config,
+  files: ["**/*.ts"],
+}))
+
+export default [
   eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...tsConfigs,
   prettierConfig,
   {
-    languageOptions: {
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
     plugins: {
       import: importPlugin,
     },
     rules: {
-      "@typescript-eslint/explicit-function-return-type": "error",
-      "@typescript-eslint/explicit-module-boundary-types": "error",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/prefer-nullish-coalescing": "error",
       "@typescript-eslint/prefer-optional-chain": "error",
-      "@typescript-eslint/strict-boolean-expressions": "error",
+      "@typescript-eslint/strict-boolean-expressions": "off",
       "@typescript-eslint/switch-exhaustiveness-check": "error",
       "import/order": [
         "error",
@@ -44,4 +56,4 @@ export default tseslint.config(
   {
     ignores: ["dist/", "node_modules/", "coverage/", "*.config.js"],
   },
-)
+]

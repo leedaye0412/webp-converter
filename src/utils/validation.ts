@@ -1,5 +1,5 @@
-import type { ConvertOptions, ResizeOptions, SupportedInputFormat, ValidationResult } from "../types.js"
 import { InvalidOptionsError } from "../errors.js"
+import type { ConvertOptions, ResizeOptions, SupportedInputFormat, ValidationResult } from "../types.js"
 
 export const SUPPORTED_FORMATS: readonly SupportedInputFormat[] = [
   "jpeg",

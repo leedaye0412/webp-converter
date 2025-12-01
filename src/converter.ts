@@ -1,5 +1,5 @@
-import type { ConvertOptions, ConvertResult, NodeInput } from "./types.js"
 import { ConversionError } from "./errors.js"
+import type { ConvertOptions, ConvertResult, NodeInput } from "./types.js"
 import { normalizeInput } from "./utils/file.js"
 import { validateConvertOptions } from "./utils/validation.js"
 
