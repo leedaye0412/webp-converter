@@ -14,9 +14,9 @@ pnpm dev
 ## PR 전 체크리스트
 
 \`\`\`bash
-pnpm lint      # 린트 검사
+pnpm lint # 린트 검사
 pnpm typecheck # 타입 검사
-pnpm test      # 테스트 실행
+pnpm test # 테스트 실행
 \`\`\`
 
 ## 커밋 컨벤션

@@ -1,6 +1,6 @@
-export { convertToWebP, createConverter } from "./converter.js"
-export { batchConvert } from "./batch.js"
-export { validateImage } from "./validate.js"
+export { convertToWebP, createConverter } from './converter.js';
+export { batchConvert } from './batch.js';
+export { validateImage } from './validate.js';
 
 export type {
   ConvertOptions,
@@ -17,7 +17,7 @@ export type {
   BrowserInput,
   UniversalInput,
   SupportedInputFormat,
-} from "./types.js"
+} from './types.js';
 
 export {
   WebPConverterError,
@@ -26,7 +26,7 @@ export {
   FileNotFoundError,
   InvalidOptionsError,
   ConversionError,
-} from "./errors.js"
+} from './errors.js';
 
-export { SUPPORTED_FORMATS } from "./utils/validation.js"
-export { formatBytes } from "./utils/file.js"
+export { SUPPORTED_FORMATS } from './utils/validation.js';
+export { formatBytes } from './utils/file.js';
