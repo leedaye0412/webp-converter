@@ -79,6 +79,8 @@ export class ConversionError extends WebPConverterError {
   constructor(message: string, originalError?: Error) {
     super(message, "CONVERSION_FAILED")
     this.name = "ConversionError"
-    this.originalError = originalError
+    if (originalError !== undefined) {
+      this.originalError = originalError
+    }
   }
 }

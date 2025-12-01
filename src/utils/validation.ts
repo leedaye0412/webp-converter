@@ -1,4 +1,4 @@
-import type { ConvertOptions, ResizeOptions, SupportedInputFormat } from "../types.js"
+import type { ConvertOptions, ResizeOptions, SupportedInputFormat, ValidationResult } from "../types.js"
 import { InvalidOptionsError } from "../errors.js"
 
 export const SUPPORTED_FORMATS: readonly SupportedInputFormat[] = [
@@ -87,6 +87,8 @@ export function detectFormatFromExtension(filename: string): SupportedInputForma
   return null
 }
 
-export function createValidationResult(valid: boolean, error?: string) {
-  return valid ? { valid: true } : { valid: false, error }
+export function createValidationResult(valid: boolean, error?: string): ValidationResult {
+  if (valid) return { valid: true }
+  if (error === undefined) return { valid: false }
+  return { valid: false, error }
 }

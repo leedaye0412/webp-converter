@@ -7,6 +7,7 @@ import { join, dirname, basename, extname } from "node:path"
 import { batchConvert } from "./batch.js"
 import { formatBytes } from "./utils/file.js"
 import { SUPPORTED_FORMATS } from "./utils/validation.js"
+import type { ResizeFit, ResizeOptions } from "./types.js"
 
 interface CLIOptions {
   output?: string
@@ -21,9 +22,21 @@ interface CLIOptions {
   dryRun: boolean
 }
 
-function parseResize(resize: string) {
+function parseResize(resize: string): Pick<ResizeOptions, "width" | "height"> {
   const [w, h] = resize.toLowerCase().split("x")
-  return { width: w ? Number.parseInt(w, 10) : undefined, height: h ? Number.parseInt(h, 10) : undefined }
+  return {
+    ...(w ? { width: Number.parseInt(w, 10) } : {}),
+    ...(h ? { height: Number.parseInt(h, 10) } : {}),
+  }
+}
+
+function buildResizeOptions(resize?: string, fit?: string): ResizeOptions | undefined {
+  if (!resize) return undefined
+  const parsed = parseResize(resize)
+  return {
+    ...parsed,
+    ...(fit ? { fit: fit as ResizeFit } : {}),
+  }
 }
 
 function collectImageFiles(dir: string, recursive: boolean): string[] {
@@ -98,12 +111,13 @@ program
     console.log("\n🚀 Starting conversion...\n")
     let saved = 0
 
+    const resizeOptions = buildResizeOptions(options.resize, options.fit)
     const results = await batchConvert(files, {
       quality,
       lossless: options.lossless,
       preserveMetadata: options.preserveMetadata,
       method: options.method as "default" | "fast" | "best",
-      resize: options.resize ? { ...parseResize(options.resize), fit: options.fit as "cover" } : undefined,
+      ...(resizeOptions ? { resize: resizeOptions } : {}),
       onProgress: (p) => {
         if (options.verbose || p.status !== "pending") {
           const icon = p.status === "completed" ? "✅" : p.status === "failed" ? "❌" : "⏳"

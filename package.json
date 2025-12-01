@@ -2,7 +2,14 @@
   "name": "@leedaye0412/webp-converter",
   "version": "1.0.0",
   "description": "A type-safe, zero-dependency WebP image converter for Node.js and browsers",
-  "keywords": ["webp", "image", "converter", "compression", "typescript", "cli"],
+  "keywords": [
+    "webp",
+    "image",
+    "converter",
+    "compression",
+    "typescript",
+    "cli"
+  ],
   "author": "Your Name <your@email.com>",
   "license": "MIT",
   "repository": {
@@ -31,7 +38,11 @@
   "bin": {
     "webp-convert": "./dist/cli.js"
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=18.0.0"
   },
@@ -75,5 +86,6 @@
     "sharp": {
       "optional": true
     }
-  }
+  },
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }
