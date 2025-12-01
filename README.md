@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
 
-고해상도 포트폴리오 이미지를 WebP로 자동 변환해 스토리지 비용과 페이지 로딩 시간을 동시에 줄이는 TypeScript 기반 라이브러리이자 CLI 도구입니다. 코드, 테스트, 빌드 설정까지 모두 저장소에 포함되어 있어 운영 환경과 개발 환경을 쉽게 맞출 수 있습니다.
+고해상도 이미지를 WebP로 자동 변환해 스토리지 비용과 페이지 로딩 시간을 동시에 줄이는 TypeScript 기반 라이브러리이자 CLI 도구입니다. 코드, 테스트, 빌드 설정까지 모두 저장소에 포함되어 있어 운영 환경과 개발 환경을 쉽게 맞출 수 있습니다.
 
 ## 문제 정의
 
