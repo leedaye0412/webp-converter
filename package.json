@@ -1,5 +1,5 @@
 {
-  "name": "@leedaye0412/webp-converter",
+  "name": "@leedaye/webp-converter",
   "version": "1.0.0",
   "description": "A type-safe, zero-dependency WebP image converter for Node.js and browsers",
   "keywords": [

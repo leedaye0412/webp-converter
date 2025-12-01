@@ -1,7 +1,7 @@
-# @leedaye0412/webp-converter
+# @leedaye/webp-converter
 
 [![CI](https://github.com/leedaye0412/webp-converter/actions/workflows/ci.yml/badge.svg)](https://github.com/leedaye0412/webp-converter/actions)
-[![npm version](https://badge.fury.io/js/%40leedaye0412%2Fwebp-converter.svg)](https://www.npmjs.com/package/@leedaye0412/webp-converter)
+[![npm version](https://badge.fury.io/js/%40leedaye%2Fwebp-converter.svg)](https://www.npmjs.com/package/@leedaye/webp-converter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
 
@@ -15,7 +15,7 @@ CMS가 원본 PNG/JPEG를 그대로 저장하면 다음 문제가 반복됩니�
 - **느린 로딩 속도**: 방문자가 작품을 열람할 때 전송량과 LCP가 동시에 악화
 - **대역폭 낭비**: CDN/스토리지에서 불필요한 데이터가 흘러나가 운영비 부담
 
-`@leedaye0412/webp-converter`는 업로드 시점에 WebP로 변환하여 평균 30~80% 용량을 절감합니다.
+`@leedaye/webp-converter`는 업로드 시점에 WebP로 변환하여 평균 30~80% 용량을 절감합니다.
 
 ## 핵심 특징
 
@@ -49,9 +49,9 @@ webp-converter/
 
 ```bash
 # 라이브러리 설치 (peerDependencies 포함)
-pnpm add @leedaye0412/webp-converter sharp
+pnpm add @leedaye/webp-converter sharp
 # 또는
-npm install @leedaye0412/webp-converter sharp
+npm install @leedaye/webp-converter sharp
 ```
 
 `sharp`는 런타임 변환을 수행하는 선택형 피어 의존성입니다. WebAssembly 환경 등에서 다른 백엔드를 쓰려면 `convertWithSharp` 부분을 대체하면 됩니다.
@@ -78,7 +78,7 @@ GitHub Actions CI(`ci.yml`)는 빌드·테스트·린트를 모두 통과해야�
 
 ```typescript
 import { promises as fs } from "node:fs"
-import { convertToWebP } from "@leedaye0412/webp-converter"
+import { convertToWebP } from "@leedaye/webp-converter"
 
 const buffer = await fs.readFile("./profile.jpg")
 const result = await convertToWebP(buffer, { quality: 85 })
@@ -92,7 +92,7 @@ console.log(
 #### 재사용 가능한 컨버터
 
 ```typescript
-import { createConverter } from "@leedaye0412/webp-converter"
+import { createConverter } from "@leedaye/webp-converter"
 
 const converter = createConverter({ quality: 80, resize: { width: 1600, fit: "inside" } })
 const shot = await converter.convert("./screenshot.png")
@@ -101,7 +101,7 @@ const shot = await converter.convert("./screenshot.png")
 #### 배치 변환 + 진행률
 
 ```typescript
-import { batchConvert } from "@leedaye0412/webp-converter"
+import { batchConvert } from "@leedaye/webp-converter"
 
 const files = ["./img1.png", "./img2.jpg", "./img3.tiff"]
 const results = await batchConvert(files, {
